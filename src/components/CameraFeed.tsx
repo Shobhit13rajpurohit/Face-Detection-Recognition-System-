@@ -244,8 +244,8 @@ const CameraFeed: React.FC<CameraFeedProps> = ({ onPersonDetected }) => {
           {isActive && (
             <>
               <div className="absolute inset-0 border border-cyan-500/20" />
-              <div className="absolute top-0 left-0 w-32 h-32 border-l-2 border-t-2 border-cyan-500/50" />
-              <div className="absolute bottom-0 right-0 w-32 h-32 border-r-2 border-b-2 border-cyan-500/50" />
+              <div className="absolute top-0 left-0 w-16 md:w-32 h-16 md:h-32 border-l-2 border-t-2 border-cyan-500/50" />
+              <div className="absolute bottom-0 right-0 w-16 md:w-32 h-16 md:h-32 border-r-2 border-b-2 border-cyan-500/50" />
               
               {/* Person detection circles */}
               {detectedPersons.map((person, index) => (
@@ -259,10 +259,10 @@ const CameraFeed: React.FC<CameraFeedProps> = ({ onPersonDetected }) => {
                   }}
                 >
                   {/* Outer pulsing circle */}
-                  <div className="animate-ping absolute w-16 h-16 rounded-full border-2 border-cyan-500/30 opacity-75"></div>
+                  <div className="animate-ping absolute w-10 md:w-16 h-10 md:h-16 rounded-full border-2 border-cyan-500/30 opacity-75"></div>
                   
                   {/* Main circle */}
-                  <div className="relative w-16 h-16 rounded-full border-2 border-cyan-500 flex items-center justify-center">
+                  <div className="relative w-10 md:w-16 h-10 md:h-16 rounded-full border-2 border-cyan-500 flex items-center justify-center">
                     <div className="absolute top-full mt-2 bg-black/70 px-2 py-1 rounded text-xs text-cyan-400 whitespace-nowrap">
                       {person.name} • {person.confidence}%
                     </div>
@@ -271,14 +271,14 @@ const CameraFeed: React.FC<CameraFeedProps> = ({ onPersonDetected }) => {
               ))}
               
               <div className="absolute bottom-4 left-4">
-                <div className="bg-cyan-500/20 backdrop-blur-sm rounded-lg p-2 border border-cyan-500/30">
-                  <div className="flex items-center space-x-2">
-                    <User className="w-4 h-4 text-cyan-400" />
-                    <span className="text-sm text-cyan-400">Live Feed</span>
+                <div className="bg-cyan-500/20 backdrop-blur-sm rounded-lg p-1 md:p-2 border border-cyan-500/30">
+                  <div className="flex items-center space-x-1 md:space-x-2">
+                    <User className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
+                    <span className="text-xs md:text-sm text-cyan-400">Live Feed</span>
                     {detectedPersons.length > 0 && (
                       <>
                         <div className="w-1 h-1 rounded-full bg-cyan-400"></div>
-                        <span className="text-sm text-cyan-400">{detectedPersons.length} detected</span>
+                        <span className="text-xs md:text-sm text-cyan-400">{detectedPersons.length} detected</span>
                       </>
                     )}
                   </div>
@@ -286,23 +286,23 @@ const CameraFeed: React.FC<CameraFeedProps> = ({ onPersonDetected }) => {
               </div>
               
               <div className="absolute top-4 right-4 flex space-x-2">
-                <div className="rotate-slow w-16 h-16 rounded-full border-2 border-cyan-500/20 flex items-center justify-center">
-                  <div className="w-2 h-2 bg-cyan-500 rounded-full" />
+                <div className="rotate-slow w-8 h-8 md:w-16 md:h-16 rounded-full border-2 border-cyan-500/20 flex items-center justify-center">
+                  <div className="w-1 md:w-2 h-1 md:h-2 bg-cyan-500 rounded-full" />
                 </div>
               </div>
             </>
           )}
           
           {!isActive && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4">
-              <CameraOff className="w-16 h-16 text-gray-600" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4 p-4">
+              <CameraOff className="w-10 h-10 md:w-16 md:h-16 text-gray-600" />
               {error && (
-                <div className="text-red-400 text-center max-w-md px-4">
+                <div className="text-red-400 text-center text-sm md:text-base max-w-md px-4">
                   {error}
                 </div>
               )}
               {!error && (
-                <div className="text-gray-400 text-center">
+                <div className="text-gray-400 text-center text-sm md:text-base">
                   Camera is inactive. Click the camera button to start.
                 </div>
               )}
@@ -311,26 +311,26 @@ const CameraFeed: React.FC<CameraFeedProps> = ({ onPersonDetected }) => {
           
           {loading && (
             <div className="absolute inset-0 flex items-center justify-center bg-gray-900/70">
-              <div className="animate-spin w-12 h-12 border-4 border-cyan-500 border-t-transparent rounded-full"></div>
+              <div className="animate-spin w-8 h-8 md:w-12 md:h-12 border-4 border-cyan-500 border-t-transparent rounded-full"></div>
             </div>
           )}
         </div>
       </div>
       
-      <div className="absolute top-4 left-4 space-x-2 flex">
+      <div className="absolute top-2 md:top-4 left-2 md:left-4 space-x-2 flex">
         <button
           onClick={() => isActive ? stopCamera() : startCamera()}
-          className={`p-2 rounded transition-all duration-200 ${
+          className={`p-1 md:p-2 rounded transition-all duration-200 ${
             isActive
               ? 'bg-red-500/20 text-red-400 hover:bg-red-500/30'
               : 'bg-cyan-500/20 text-cyan-400 hover:bg-cyan-500/30'
           }`}
           disabled={loading}
         >
-          <Camera className="w-5 h-5" />
+          <Camera className="w-4 h-4 md:w-5 md:h-5" />
         </button>
-        <button className="p-2 rounded bg-cyan-500/20 text-cyan-400 hover:bg-cyan-500/30 transition-all duration-200">
-          <Maximize2 className="w-5 h-5" />
+        <button className="p-1 md:p-2 rounded bg-cyan-500/20 text-cyan-400 hover:bg-cyan-500/30 transition-all duration-200">
+          <Maximize2 className="w-4 h-4 md:w-5 md:h-5" />
         </button>
       </div>
     </div>

@@ -12,11 +12,11 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-3 gap-6">
-        <div className="col-span-2">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="lg:col-span-2">
           <CameraFeed onPersonDetected={setDetectedPerson} />
         </div>
-        <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg border border-cyan-900/30 p-6">
+        <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg border border-cyan-900/30 p-4 md:p-6">
           <h2 className="text-xl font-semibold text-cyan-400 mb-4">Detected Person</h2>
           {detectedPerson ? (
             <div className="space-y-4">

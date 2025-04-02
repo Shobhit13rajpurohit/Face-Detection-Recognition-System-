@@ -14,12 +14,12 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ items }) => {
   return (
-    <nav className="w-64 h-screen bg-gray-800/50 backdrop-blur-sm p-4 border-r border-cyan-900/30">
-      <div className="mb-8">
+    <nav className="w-64 h-screen bg-gray-800/50 backdrop-blur-sm p-4 border-r border-cyan-900/30 overflow-y-auto">
+      <div className="mb-6 md:mb-8">
         <div className="relative">
           <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg blur opacity-25" />
-          <h1 className="relative bg-gray-900 rounded-lg p-3 text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-          Face Detection&Recognition System 
+          <h1 className="relative bg-gray-900 rounded-lg p-2 md:p-3 text-lg md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+            Face Detection<br className="md:hidden" /> & Recognition
           </h1>
         </div>
       </div>
@@ -30,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
             key={item.path}
             to={item.path}
             className={({ isActive }) =>
-              `group flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+              `group flex items-center space-x-3 px-3 md:px-4 py-2 md:py-3 rounded-lg transition-all duration-300 ${
                 isActive
                   ? 'bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-400 shadow-lg shadow-cyan-500/20'
                   : 'text-gray-400 hover:bg-gray-700/50 hover:text-gray-200'
